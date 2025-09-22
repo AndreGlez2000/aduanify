@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Negocio: aduanify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Slate, Zinc, Amber) -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling dashboard with a sticky top navigation bar. This structure was chosen to guide the user (potential investor) through a compelling narrative: starting with the high-level vision, defining the market problem, presenting our solution, detailing the financials with interactive charts, exploring strategic what-if scenarios, and concluding with a clear investment proposal. This linear-but-explorable flow is more engaging than a static document and allows the user to drill down into areas of interest, building confidence in the business case. -->
+    <!-- Visualization & Content Choices:
+        - Report Info: Market Size & Segments -> Goal: Inform -> Viz: Donut Chart -> Interaction: Hover for details -> Justification: Quickly shows the composition of the target market. -> Library: Chart.js.
+        - Report Info: Year 1 Cost Breakdown -> Goal: Compare -> Viz: Bar Chart -> Interaction: Hover to see exact values for fixed vs. variable costs -> Justification: Clearly separates initial investment from operational costs. -> Library: Chart.js.
+        - Report Info: 3-Year Financial Projections -> Goal: Show Change/Trend -> Viz: Multi-Line Chart (Revenue, Costs, Profit) -> Interaction: Tooltips on data points -> Justification: Provides a dynamic and clear view of growth and profitability over time. -> Library: Chart.js.
+        - Report Info: Break-even Point -> Goal: Inform -> Viz: Line Chart with Annotation -> Interaction: Static view for clarity -> Justification: Visually pinpoints the crucial milestone of profitability. -> Library: Chart.js.
+        - Report Info: Cause & Effect Scenarios -> Goal: Explore Relationships -> Presentation: Interactive HTML/CSS cards -> Interaction: User clicks buttons representing strategic decisions, which dynamically updates outcome text. -> Justification: Demonstrates foresight and strategic planning in a simple, non-chart format. -> Method: Vanilla JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-amber-600">aduanify</span>
+                    <span class="text-2xl font-bold text-slate-700">TJ</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#oportunidad" class="text-slate-600 hover:bg-amber-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Oportunidad</a>
+                        <a href="#solucion" class="text-slate-600 hover:bg-amber-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Solución</a>
+                        <a href="#financieros" class="text-slate-600 hover:bg-amber-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Finanzas</a>
+                        <a href="#estrategia" class="text-slate-600 hover:bg-amber-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Estrategia</a>
+                        <a href="#propuesta" class="bg-amber-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-amber-600">Propuesta</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-white">
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+                    <span class="block">Visibilidad Logística para la Industria</span>
+                    <span class="block text-amber-600">de Tijuana.</span>
+                </h1>
+                <p class="mt-6 max-w-lg mx-auto text-xl text-slate-600 sm:max-w-3xl">
+                    Presentamos aduanify, una plataforma SaaS diseñada para resolver el principal desafío de las PyMEs de manufactura y logística en la región: la falta de visibilidad en tiempo real de sus envíos transfronterizos.
+                </p>
+            </div>
+        </section>
+
+        <section id="oportunidad" class="py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">La Oportunidad</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Un Mercado Desatendido en un Hub Logístico Clave
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-slate-600 lg:mx-auto">
+                        Tijuana es un pilar de la manufactura y el comercio binacional, pero las herramientas de seguimiento logístico de nivel empresarial están fuera del alcance de las PyMEs locales. Este sector, vital para la economía, opera con incertidumbre, dependiendo de llamadas y correos para conocer el estado de sus envíos. Nosotros cerramos esa brecha.
+                    </p>
+                </div>
+
+                <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="p-6 bg-white rounded-lg shadow-lg">
+                        <h3 class="text-lg font-medium text-slate-900">Problema Crítico</h3>
+                        <p class="mt-2 text-base text-slate-600">La falta de visibilidad causa retrasos en aduanas, costos inesperados por demoras y una planificación de producción ineficiente.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-lg">
+                        <h3 class="text-lg font-medium text-slate-900">Mercado Potencial</h3>
+                        <p class="mt-2 text-base text-slate-600">Estimamos un mercado anual direccionable de <span class="font-bold">$150,000,000 MXN</span> entre las PyMEs de manufactura y logística de Tijuana.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-lg">
+                        <h3 class="text-lg font-medium text-slate-900">Competencia Limitada</h3>
+                        <p class="mt-2 text-base text-slate-600">Los competidores son soluciones costosas de EE.UU. no adaptadas al mercado local o sistemas anticuados que no ofrecen seguimiento en tiempo real.</p>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                     <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Segmentación del Mercado Objetivo</h3>
+                    <div class="chart-container">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucion" class="bg-slate-100 py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                     <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Nuestra Solución</h2>
+                     <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        aduanify: Simple, Potente y Asequible
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-slate-600 lg:mx-auto">
+                        Nuestra plataforma ofrece una suite de herramientas enfocadas en las necesidades específicas del corredor Tijuana-San Diego, proporcionando claridad y control sobre la cadena de suministro.
+                    </p>
+                </div>
+
+                <div class="mt-12 grid gap-8 md:grid-cols-2">
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-slate-900">Seguimiento GPS en Tiempo Real</h3>
+                        <p class="mt-2 text-base text-slate-600">Visualiza la ubicación exacta de tus unidades en un mapa interactivo, desde la planta en Tijuana hasta el destino en California.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-slate-900">Alertas de Estado de Aduanas</h3>
+                        <p class="mt-2 text-base text-slate-600">Recibe notificaciones automáticas sobre el estado del cruce fronterizo, reduciendo la incertidumbre y permitiendo una reacción rápida a inspecciones.</p>
+                    </div>
+                     <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-slate-900">ETAs Predictivos</h3>
+                        <p class="mt-2 text-base text-slate-600">Nuestro algoritmo analiza el tráfico y los tiempos de espera en la frontera para ofrecer estimaciones de llegada precisas.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-slate-900">Modelo de Precios por Suscripción</h3>
+                        <p class="mt-2 text-base text-slate-600">Ofrecemos planes flexibles que se adaptan al tamaño de cada empresa, desde $3,500 MXN al mes, haciendo la tecnología accesible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="financieros" class="py-16 sm:py-24">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Plan Financiero</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Un Camino Claro hacia la Rentabilidad
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-slate-600 lg:mx-auto">
+                        Nuestras proyecciones se basan en un análisis conservador del mercado y una estructura de costos optimizada. A continuación, se presentan los datos clave que sustentan la viabilidad económica de aduanify, todos en pesos mexicanos (MXN).
+                    </p>
+                </div>
+
+                 <div class="mt-16 grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Análisis de Costos (Año 1)</h3>
+                        <div class="chart-container">
+                            <canvas id="costsChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Punto de Equilibrio</h3>
+                        <div class="chart-container">
+                             <canvas id="breakEvenChart"></canvas>
+                        </div>
+                    </div>
+                 </div>
+                 
+                 <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Proyecciones Financieras a 3 Años</h3>
+                    <div class="chart-container" style="max-width: 800px;">
+                        <canvas id="projectionsChart"></canvas>
+                    </div>
+                 </div>
+
+             </div>
+        </section>
+        
+        <section id="estrategia" class="bg-slate-100 py-16 sm:py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Análisis Estratégico</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Decisiones y sus Efectos
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-slate-600 mx-auto">
+                        El éxito depende de decisiones estratégicas clave. Hemos analizado cómo diferentes enfoques pueden impactar nuestro crecimiento y viabilidad. Selecciona una decisión para ver su posible efecto en el negocio.
+                    </p>
+                </div>
+                
+                <div class="mt-12 bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex flex-wrap justify-center gap-4 mb-6" id="strategy-buttons">
+                        <button data-strategy="marketing" class="strategy-btn bg-amber-500 text-white px-4 py-2 rounded-md font-medium">Marketing Agresivo</button>
+                        <button data-strategy="pricing" class="strategy-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium">Precios Premium</button>
+                        <button data-strategy="partners" class="strategy-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium">Alianzas Clave</button>
+                    </div>
+                    <div id="strategy-output" class="p-6 bg-slate-50 rounded-lg">
+                        <h4 id="strategy-title" class="text-xl font-semibold text-slate-800 mb-2">Marketing Agresivo</h4>
+                        <p id="strategy-description" class="text-slate-600">
+                            <strong>Decisión:</strong> Duplicar la inversión en marketing digital y contratar un especialista en ventas adicional durante el primer año.
+                            <br>
+                            <strong>Efecto Positivo:</strong> Aceleración en la adquisición de clientes, alcanzando el punto de equilibrio 3-4 meses antes. Mayor reconocimiento de marca.
+                            <br>
+                            <strong>Riesgo:</strong> Mayor "burn rate" inicial. El Costo de Adquisición de Cliente (CAC) podría aumentar si las campañas no son eficientes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="propuesta" class="bg-amber-600">
+            <div class="max-w-4xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                    <span class="block">Únete a la Transformación Logística de Tijuana</span>
+                </h2>
+                <p class="mt-4 text-lg leading-6 text-amber-100">
+                    Buscamos una inversión inicial para lanzar y escalar aduanify, capturar el mercado y convertirnos en el estándar de la región.
+                </p>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
+                    <div class="bg-white/10 p-6 rounded-lg">
+                        <p class="text-4xl font-bold">$5,400,000 MXN</p>
+                        <p class="mt-1 text-lg text-amber-200">Inversión Solicitada</p>
+                        <p class="text-sm text-amber-100">(Equivalente a ~$300,000 USD)</p>
+                    </div>
+                     <div class="bg-white/10 p-6 rounded-lg">
+                        <p class="text-4xl font-bold">20%</p>
+                        <p class="mt-1 text-lg text-amber-200">Participación Accionaria</p>
+                         <p class="text-sm text-amber-100">Para cubrir costos de Año 1 y capital de operación.</p>
+                    </div>
+                </div>
+                 <a href="mailto:inversion@logitrak.tj" class="mt-10 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-amber-600 bg-white hover:bg-amber-50 sm:w-auto">
+                    Contactar para Invertir
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+            <div class="mt-8 md:mt-0 md:order-1">
+                <p class="text-center text-base text-slate-500">&copy; 2025 aduanify. Todos los derechos reservados. Tijuana, B.C., México.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartFontColor = '#475569'; // slate-600
+
+            const marketData = {
+                labels: ['Manufactura (Maquiladora)', 'Logística y Transporte', 'Comercio Minorista', 'Otros'],
+                datasets: [{
+                    label: 'Segmento de Mercado',
+                    data: [55, 30, 10, 5],
+                    backgroundColor: ['#f59e0b', '#fbbf24', '#fcd34d', '#fef3c7'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            };
+            const marketCtx = document.getElementById('marketChart').getContext('2d');
+            new Chart(marketCtx, {
+                type: 'doughnut',
+                data: marketData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: chartFontColor
+                            }
+                        },
+                        title: {
+                            display: false
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const costsData = {
+                labels: ['Costos del Primer Año'],
+                datasets: [
+                    {
+                        label: 'Salarios',
+                        data: [3500000],
+                        backgroundColor: '#f59e0b',
+                    },
+                    {
+                        label: 'Marketing y Ventas',
+                        data: [540000],
+                        backgroundColor: '#fbbf24',
+                    },
+                    {
+                        label: 'Renta y Operativos',
+                        data: [360000],
+                        backgroundColor: '#fcd34d',
+                    },
+                    {
+                        label: 'Software y Licencias',
+                        data: [180000],
+                        backgroundColor: '#fef3c7',
+                    }
+                ]
+            };
+            const costsCtx = document.getElementById('costsChart').getContext('2d');
+            new Chart(costsCtx, {
+                type: 'bar',
+                data: costsData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000) + 'M';
+                                },
+                                color: chartFontColor,
+                            },
+                             grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            ticks: {
+                                color: chartFontColor,
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: chartFontColor }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw;
+                                    return `${context.dataset.label}: $${value.toLocaleString('es-MX')} MXN`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const projectionsData = {
+                labels: ['Año 1', 'Año 2', 'Año 3'],
+                datasets: [{
+                    label: 'Ingresos',
+                    data: [2500000, 8500000, 18000000],
+                    borderColor: '#16a34a', // green-600
+                    backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Costos Totales',
+                    data: [4580000, 6000000, 9500000],
+                    borderColor: '#dc2626', // red-600
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Ganancia/Pérdida Neta',
+                    data: [-2080000, 2500000, 8500000],
+                    borderColor: '#f59e0b', // amber-500
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    fill: false,
+                    tension: 0.4
+                }]
+            };
+            const projectionsCtx = document.getElementById('projectionsChart').getContext('2d');
+            new Chart(projectionsCtx, {
+                type: 'line',
+                data: projectionsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000) + 'M';
+                                },
+                                color: chartFontColor,
+                            }
+                        },
+                        x: {
+                             ticks: { color: chartFontColor }
+                        }
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: chartFontColor }
+                        },
+                         tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw;
+                                    return `${context.dataset.label}: $${value.toLocaleString('es-MX')} MXN`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+             const breakEvenData = {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8'],
+                datasets: [{
+                    label: 'Costos Totales Acum.',
+                    data: [1145000, 2290000, 3435000, 4580000, 5280000, 5980000, 6680000, 7380000],
+                    borderColor: '#dc2626', // red-600
+                    fill: false,
+                }, {
+                    label: 'Ingresos Acum.',
+                    data: [200000, 600000, 1400000, 2500000, 3800000, 5400000, 7000000, 8500000],
+                    borderColor: '#16a34a', // green-600
+                    fill: false,
+                }]
+            };
+            const breakEvenCtx = document.getElementById('breakEvenChart').getContext('2d');
+            new Chart(breakEvenCtx, {
+                type: 'line',
+                data: breakEvenData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                         y: {
+                            ticks: {
+                                callback: function(value) { return '$' + (value / 1000000) + 'M'; },
+                                color: chartFontColor,
+                            }
+                        },
+                        x: { ticks: { color: chartFontColor } }
+                    },
+                     plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: chartFontColor }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: $${context.raw.toLocaleString('es-MX')}`;
+                                }
+                            }
+                        },
+                        annotation: {
+                            annotations: {
+                                line1: {
+                                    type: 'line',
+                                    xMin: 'Q7',
+                                    xMax: 'Q7',
+                                    borderColor: 'rgb(55, 65, 81)',
+                                    borderWidth: 2,
+                                    borderDash: [6, 6],
+                                    label: {
+                                        content: 'Punto de Equilibrio',
+                                        enabled: true,
+                                        position: 'start'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const strategies = {
+                marketing: {
+                    title: 'Marketing Agresivo',
+                    description: `<strong>Decisión:</strong> Duplicar la inversión en marketing digital y contratar un especialista en ventas adicional durante el primer año.
+                                <br>
+                                <strong>Efecto Positivo:</strong> Aceleración en la adquisición de clientes, alcanzando el punto de equilibrio 3-4 meses antes. Mayor reconocimiento de marca.
+                                <br>
+                                <strong>Riesgo:</strong> Mayor "burn rate" inicial. El Costo de Adquisición de Cliente (CAC) podría aumentar si las campañas no son eficientes.`
+                },
+                pricing: {
+                    title: 'Precios Premium',
+                    description: `<strong>Decisión:</strong> Posicionar aduanify como una solución de alta gama, con precios un 25% por encima de lo proyectado, enfocado en clientes que valoran el servicio y soporte.
+                                <br>
+                                <strong>Efecto Positivo:</strong> Mayor Valor de Vida del Cliente (LTV) y márgenes de ganancia más altos por cliente.
+                                <br>
+                                <strong>Riesgo:</strong> Ciclo de ventas más largo y un mercado potencial más pequeño, dificultando la adquisición inicial de clientes.`
+                },
+                partners: {
+                    title: 'Alianzas Clave',
+                    description: `<strong>Decisión:</strong> Enfocar esfuerzos en crear alianzas con agentes aduanales y asociaciones de transporte, ofreciendo comisiones por referidos.
+                                <br>
+                                <strong>Efecto Positivo:</strong> Reducción significativa del CAC al aprovechar canales de confianza existentes. Adopción más rápida.
+                                <br>
+                                <strong>Riesgo:</strong> Dependencia de terceros para generar prospectos. Reparto de ingresos que podría afectar los márgenes a largo plazo.`
+                }
+            };
+
+            const strategyButtonsContainer = document.getElementById('strategy-buttons');
+            const strategyTitle = document.getElementById('strategy-title');
+            const strategyDescription = document.getElementById('strategy-description');
+
+            strategyButtonsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const strategyKey = e.target.dataset.strategy;
+                    
+                    document.querySelectorAll('.strategy-btn').forEach(btn => {
+                        btn.classList.remove('bg-amber-500', 'text-white');
+                        btn.classList.add('bg-slate-200', 'text-slate-700');
+                    });
+                    
+                    e.target.classList.add('bg-amber-500', 'text-white');
+                    e.target.classList.remove('bg-slate-200', 'text-slate-700');
+                    
+                    const content = strategies[strategyKey];
+                    strategyTitle.textContent = content.title;
+                    strategyDescription.innerHTML = content.description;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
