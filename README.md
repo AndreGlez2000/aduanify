@@ -9,7 +9,7 @@ Aduanify es una plataforma SaaS B2B diseñada para resolver el principal punto d
 
 ---
 
-## 🎯 El Lienzo de Aduanify (Lean Canvas)
+## 🎯 Aduanify (Lean Canvas)
 
 Nuestro modelo de negocio se basa en la metodología Lean Startup, enfocada en resolver problemas reales y construir una solución sostenible.
 
@@ -135,4 +135,4 @@ Nuestra estrategia de lanzamiento está dividida en fases claras para asegurar l
 5.  Haz **Push** a tu rama (`git push origin feature/nueva-funcionalidad`).
 6.  Abre un **Pull Request** para revisión.
 
-También puedes contactarnos directamente a [**hola@aduanify.com**](mailto:hola@aduanify.com) (email de ejemplo).
+También puedes contactarnos directamente a [**hola@aduanify.com**](mailto:gonzalez.andre@uabc.edu.mx)

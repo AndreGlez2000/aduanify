@@ -90,18 +90,26 @@
     
         <div id="tab-content-catalogo" class="tab-content" style="display: block;">
         
-            <section id="catalogo-hero" class="bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <section id="catalogo-hero" class="relative bg-white overflow-hidden">
+                <!-- Imagen de fondo -->
+                <div class="absolute inset-0">
+                    <img src="images/aduana.jpg" alt="Cruce fronterizo" class="w-full h-full object-cover">
+                    <!-- Overlay oscuro para mejorar legibilidad del texto -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
+                </div>
+                
+                <!-- Contenido -->
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
                     <div class="text-center">
-                        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
                             <span class="block">Visibilidad y predictibilidad</span>
-                            <span class="block text-amber-600">en tus cruces fronterizos.</span>
+                            <span class="block text-amber-500">en tus cruces fronterizos.</span>
                         </h1>
-                        <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-600">
+                        <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200">
                             Simplificamos la logística aduanal para las PyMEs de Tijuana, convirtiendo la incertidumbre en control.
                         </p>
                         <div class="mt-10 flex justify-center gap-x-6">
-                            <a href="mailto:hola@aduanify.com" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+                            <a href="mailto:hola@aduanify.com" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 transition-all hover:scale-105">
                                 Agenda una Demo Gratuita
                             </a>
                         </div>
