@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aduanify - Visibilidad en Cruces Fronterizos</title>
+    <title>Aduanify - Catálogo y Modelo de Negocio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f1f5f9; /* slate-100 */
         }
+        
+        /* --- Estilos del Lean Canvas Original --- */
         .canvas-card {
             background-color: white;
             border-radius: 0.75rem;
@@ -28,7 +31,7 @@
             border-bottom: 1px solid #e2e8f0;
         }
         
-        /* Estilos para las tarjetas del catálogo */
+        /* --- Estilos del Nuevo Catálogo --- */
         .catalog-card {
             background-color: white;
             border-radius: 0.75rem;
@@ -40,6 +43,20 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+        
+        /* --- Estilos para las Pestañas (Tabs) --- */
+        .tab-content {
+            display: none; /* Oculto por defecto */
+        }
+        .tab-link {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-link.active {
+            color: #d97706; /* amber-600 */
+            border-bottom: 2px solid #d97706;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="text-slate-800">
@@ -50,15 +67,18 @@
                 <div class="flex items-center">
                     <span class="text-2xl font-bold text-amber-600">Aduanify</span>
                 </div>
-                <nav class="hidden sm:flex items-center space-x-8">
-                    <a href="#catalogo" class="text-base font-medium text-slate-600 hover:text-amber-600 transition-colors">Catálogo</a>
-                    <a href="#problema" class="text-base font-medium text-slate-600 hover:text-amber-600 transition-colors">Problema</a>
-                    <a href="#solucion" class="text-base font-medium text-slate-600 hover:text-amber-600 transition-colors">Solución</a>
-                    <a href="#planes" class="text-base font-medium text-slate-600 hover:text-amber-600 transition-colors">Planes</a>
-                    <a href="#lean-canvas" class="text-base font-medium text-slate-400 hover:text-amber-600 transition-colors">Modelo de Negocio (Canvas)</a>
+                
+                <nav class="flex items-center space-x-8">
+                    <a id="tab-link-catalogo" class="tab-link py-5 text-base font-medium text-slate-600 hover:text-amber-600 active" onclick="showTab('catalogo')">
+                        Catálogo
+                    </a>
+                    <a id="tab-link-canvas" class="tab-link py-5 text-base font-medium text-slate-600 hover:text-amber-600" onclick="showTab('canvas')">
+                        Modelo de Negocio (Canvas)
+                    </a>
                 </nav>
+                
                 <div class="hidden sm:block">
-                     <a href="#cta" class="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-amber-600 hover:bg-amber-700">
+                     <a href="mailto:hola@aduanify.com" class="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-amber-600 hover:bg-amber-700">
                         Agendar Demo
                     </a>
                 </div>
@@ -67,295 +87,321 @@
     </header>
 
     <main>
-        <section id="catalogo" class="bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-                <div class="text-center">
-                    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                        <span class="block">Visibilidad y predictibilidad</span>
-                        <span class="block text-amber-600">en tus cruces fronterizos.</span>
-                    </h1>
-                    <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-600">
-                        Simplificamos la logística aduanal para las PyMEs de Tijuana, convirtiendo la incertidumbre en control.
-                    </p>
-                    <div class="mt-10 flex justify-center gap-x-6">
-                        <a href="#cta" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
-                            Agenda una Demo Gratuita
-                        </a>
-                        <a href="#solucion" class="text-lg font-semibold leading-6 text-slate-900 hover:text-slate-700">
-                            Ver la solución <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="problema" class="py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">¿Tu logística se detiene en la frontera?</h2>
-                    <p class="mt-4 text-xl text-slate-600">Sabemos que cada minuto en aduanas cuenta.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="catalog-card">
-                        <h3 class="text-lg font-semibold text-slate-900">Costos Inesperados</h3>
-                        <p class="mt-2 text-sm text-slate-600">¿Cansado de costos y multas por demoras que no puedes prever?</p>
-                    </div>
-                    <div class="catalog-card">
-                        <h3 class="text-lg font-semibold text-slate-900">ETAs Poco Fiables</h3>
-                        <p class="mt-2 text-sm text-slate-600">¿Tus Tiempos Estimados de Arribo afectan tu planeación de producción?</p>
-                    </div>
-                    <div class="catalog-card">
-                        <h3 class="text-lg font-semibold text-slate-900">Falta de Visibilidad</h3>
-                        <p class="mt-2 text-sm text-slate-600">¿Necesitas saber en tiempo real dónde está tu carga y cuál es su estatus?</p>
-                    </div>
-                    <div class="catalog-card">
-                        <h3 class="text-lg font-semibold text-slate-900">Sistemas Complejos</h3>
-                        <p class="mt-2 text-sm text-slate-600">¿Las herramientas existentes son demasiado caras o complejas para tu PyME?</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="solucion" class="bg-white py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Control total en un solo lugar.</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
-                        Te presentamos Aduanify: una plataforma SaaS de fácil uso con un dashboard centralizado que te da el control.
-                    </p>
-                </div>
-                
-                <div class="mt-12">
-                    <div class="w-full h-96 bg-slate-200 rounded-lg shadow-lg flex items-center justify-center border border-slate-300">
-                        <p class="text-slate-500 font-medium">(Aquí va un mockup o captura de pantalla de tu dashboard)</p>
-                    </div>
-                </div>
-
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold text-amber-600">Seguimiento GPS en Vivo</h3>
-                        <p class="mt-2 text-base text-slate-600">Ve exactamente dónde está tu carga en nuestro mapa interactivo.</p>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold text-amber-600">Alertas Automáticas</h3>
-                        <p class="mt-2 text-base text-slate-600">Recibe notificaciones sobre el estado del cruce (inspección, liberación).</p>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold text-amber-600">ETAs Predictivos</h3>
-                        <p class="mt-2 text-base text-slate-600">Nuestro algoritmo analiza datos para darte tiempos de arribo fiables.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="segmentos" class="py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Hecho a la medida para la industria de Tijuana.</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="catalog-card">
-                        <h3 class="text-xl font-semibold text-slate-900">PyMEs de Manufactura (Maquiladoras)</h3>
-                        <p class="mt-2 text-base text-slate-600">Ideal para Gerentes de logística y producción que necesitan coordinar la llegada de materia prima y la salida de producto terminado sin fallos.</p>
-                    </div>
-                    <div class="catalog-card">
-                        <h3 class="text-xl font-semibold text-slate-900">Empresas de Transporte y Logística</h3>
-                        <p class="mt-2 text-base text-slate-600">Perfecto para Coordinadores de tráfico que buscan optimizar rutas y comunicar el estatus exacto a sus propios clientes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="planes" class="bg-white py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Planes flexibles que crecen contigo.</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
-                        Elige el nivel de servicio que tu operación necesita.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="catalog-card border-t-4 border-slate-300 flex flex-col">
-                        <h3 class="text-xl font-semibold text-slate-900">Esencial</h3>
-                        <p class="text-sm text-slate-500">Para visibilidad básica.</p>
-                        <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
-                            <li>Dashboard Centralizado</li>
-                            <li>Seguimiento 10 Unidades</li>
-                            <li>Alertas Básicas</li>
-                        </ul>
-                        <a href="#cta" class="mt-8 block w-full rounded-md bg-slate-100 px-3 py-2 text-center text-sm font-semibold text-slate-700 hover:bg-slate-200">
-                            Solicitar Información
-                        </a>
-                    </div>
-                    <div class="catalog-card border-t-4 border-amber-500 flex flex-col shadow-2xl scale-105">
-                        <h3 class="text-xl font-semibold text-amber-600">Profesional</h3>
-                        <p class="text-sm text-slate-500">El más popular, para control total.</p>
-                        <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
-                            <li>Todo en Esencial, y...</li>
-                            <li>Seguimiento Unidades Ilimitadas</li>
-                            <li>ETAs Predictivos</li>
-                            <li>Alertas Avanzadas</li>
-                        </ul>
-                        <a href="#cta" class="mt-8 block w-full rounded-md bg-amber-600 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-amber-500">
-                            Agendar Demo
-                        </a>
-                    </div>
-                    <div class="catalog-card border-t-4 border-slate-900 flex flex-col">
-                        <h3 class="text-xl font-semibold text-slate-900">Empresarial</h3>
-                        <p class="text-sm text-slate-500">Para integración completa.</p>
-                        <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
-                            <li>Todo en Profesional, y...</li>
-                            <li>Integraciones API</li>
-                            <li>Reportes Avanzados</li>
-                            <li>Soporte Prioritario</li>
-                        </ul>
-                        <a href="#cta" class="mt-8 block w-full rounded-md bg-slate-900 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-slate-700">
-                            Contactar Ventas
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="cta" class="py-16 sm:py-24">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                 <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Deja de adivinar. Empieza a planificar.</h2>
-                 <p class="mt-4 text-xl text-slate-600">
-                     Hablemos 15 minutos. Te mostraremos cómo Aduanify puede ahorrarte tiempo y dinero en tu próxima importación.
-                 </p>
-                 <a href="mailto:hola@aduanify.com" class="mt-10 inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-amber-600 hover:bg-amber-700">
-                    Agenda tu Demo Gratuita
-                </a>
-            </div>
-        </section>
-
+    
+        <div id="tab-content-catalogo" class="tab-content" style="display: block;">
         
-        <section id="lean-canvas" class="py-16 sm:py-24 bg-white border-t border-slate-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-                        Lean Canvas: Aduanify
-                    </h1>
-                    <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
-                        Un esquema visual de nuestra estrategia de negocio, enfocado en resolver problemas reales para el mercado logístico de Tijuana.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    
-                    <div class="space-y-6">
-                        <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                                <span class="text-amber-500 mr-3 text-2xl">①</span> Problema
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li>Falta de visibilidad en tiempo real del estado de los cruces fronterizos.</li>
-                                <li>Costos inesperados y multas por demoras en aduanas.</li>
-                                <li>Planificación de producción ineficiente por ETAs (Tiempos Estimados de Arribo) poco fiables.</li>
-                                <li>Herramientas existentes son demasiado caras o complejas para las PyMEs.</li>
-                            </ul>
+            <section id="catalogo-hero" class="bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+                    <div class="text-center">
+                        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                            <span class="block">Visibilidad y predictibilidad</span>
+                            <span class="block text-amber-600">en tus cruces fronterizos.</span>
+                        </h1>
+                        <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-600">
+                            Simplificamos la logística aduanal para las PyMEs de Tijuana, convirtiendo la incertidumbre en control.
+                        </p>
+                        <div class="mt-10 flex justify-center gap-x-6">
+                            <a href="mailto:hola@aduanify.com" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+                                Agenda una Demo Gratuita
+                            </a>
                         </div>
-                        <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">②</span> Solución
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li>Plataforma SaaS de fácil uso con dashboard centralizado.</li>
-                                <li>Seguimiento GPS en tiempo real visible en un mapa interactivo.</li>
-                                <li>Alertas automáticas sobre el estado del cruce aduanal (inspección, liberación).</li>
-                                 <li>Algoritmo de ETAs predictivos basado en datos históricos y en vivo.</li>
-                            </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="catalogo-problema" class="py-16 sm:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">¿Tu logística se detiene en la frontera?</h2>
+                        <p class="mt-4 text-xl text-slate-600">Sabemos que cada minuto en aduanas cuenta.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="catalog-card">
+                            <h3 class="text-lg font-semibold text-slate-900">Costos Inesperados</h3>
+                            <p class="mt-2 text-sm text-slate-600">¿Cansado de costos y multas por demoras que no puedes prever?</p>
+                        </div>
+                        <div class="catalog-card">
+                            <h3 class="text-lg font-semibold text-slate-900">ETAs Poco Fiables</h3>
+                            <p class="mt-2 text-sm text-slate-600">¿Tus Tiempos Estimados de Arribo afectan tu planeación de producción?</p>
+                        </div>
+                        <div class="catalog-card">
+                            <h3 class="text-lg font-semibold text-slate-900">Falta de Visibilidad</h3>
+                            <p class="mt-2 text-sm text-slate-600">¿Necesitas saber en tiempo real dónde está tu carga y cuál es su estatus?</p>
+                        </div>
+                        <div class="catalog-card">
+                            <h3 class="text-lg font-semibold text-slate-900">Sistemas Complejos</h3>
+                            <p class="mt-2 text-sm text-slate-600">¿Las herramientas existentes son demasiado caras o complejas para tu PyME?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="catalogo-solucion" class="bg-white py-16 sm:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Control total en un solo lugar.</h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
+                            Te presentamos Aduanify: una plataforma SaaS de fácil uso con un dashboard centralizado que te da el control.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <div class="w-full h-96 bg-slate-200 rounded-lg shadow-lg flex items-center justify-center border border-slate-300">
+                            <p class="text-slate-500 font-medium">(Aquí va un mockup o captura de pantalla de tu dashboard)</p>
                         </div>
                     </div>
 
-                    <div class="space-y-6">
-                         <div class="canvas-card h-full flex flex-col">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">③</span> Propuesta Única de Valor
-                            </h3>
-                            <div class="p-4 flex-grow flex flex-col items-center justify-center text-center">
-                               <p class="text-2xl font-bold text-amber-600">"Visibilidad y predictibilidad en tus cruces fronterizos."</p>
-                               <p class="mt-2 text-slate-600">Simplificamos la logística aduanal para las PyMEs de Tijuana, convirtiendo la incertidumbre en control.</p>
+                    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold text-amber-600">Seguimiento GPS en Vivo</h3>
+                            <p class="mt-2 text-base text-slate-600">Ve exactamente dónde está tu carga en nuestro mapa interactivo.</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold text-amber-600">Alertas Automáticas</h3>
+                            <p class="mt-2 text-base text-slate-600">Recibe notificaciones sobre el estado del cruce (inspección, liberación).</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold text-amber-600">ETAs Predictivos</h3>
+                            <p class="mt-2 text-base text-slate-600">Nuestro algoritmo analiza datos para darte tiempos de arribo fiables.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="catalogo-segmentos" class="py-16 sm:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Hecho a la medida para la industria de Tijuana.</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="catalog-card">
+                            <h3 class="text-xl font-semibold text-slate-900">PyMEs de Manufactura (Maquiladoras)</h3>
+                            <p class="mt-2 text-base text-slate-600">Ideal para Gerentes de logística y producción que necesitan coordinar la llegada de materia prima y la salida de producto terminado sin fallos.</p>
+                        </div>
+                        <div class="catalog-card">
+                            <h3 class="text-xl font-semibold text-slate-900">Empresas de Transporte y Logística</h3>
+                            <p class="mt-2 text-base text-slate-600">Perfecto para Coordinadores de tráfico que buscan optimizar rutas y comunicar el estatus exacto a sus propios clientes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="catalogo-planes" class="bg-white py-16 sm:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Planes flexibles que crecen contigo.</h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
+                            Elige el nivel de servicio que tu operación necesita.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="catalog-card border-t-4 border-slate-300 flex flex-col">
+                            <h3 class="text-xl font-semibold text-slate-900">Esencial</h3>
+                            <p class="text-sm text-slate-500">Para visibilidad básica.</p>
+                            <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
+                                <li>Dashboard Centralizado</li>
+                                <li>Seguimiento 10 Unidades</li>
+                                <li>Alertas Básicas</li>
+                            </ul>
+                            <a href="mailto:hola@aduanify.com" class="mt-8 block w-full rounded-md bg-slate-100 px-3 py-2 text-center text-sm font-semibold text-slate-700 hover:bg-slate-200">
+                                Solicitar Información
+                            </a>
+                        </div>
+                        <div class="catalog-card border-t-4 border-amber-500 flex flex-col shadow-2xl scale-105">
+                            <h3 class="text-xl font-semibold text-amber-600">Profesional</h3>
+                            <p class="text-sm text-slate-500">El más popular, para control total.</p>
+                            <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
+                                <li>Todo en Esencial, y...</li>
+                                <li>Seguimiento Unidades Ilimitadas</li>
+                                <li>ETAs Predictivos</li>
+                                <li>Alertas Avanzadas</li>
+                            </ul>
+                            <a href="mailto:hola@aduanify.com" class="mt-8 block w-full rounded-md bg-amber-600 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-amber-500">
+                                Agendar Demo
+                            </a>
+                        </div>
+                        <div class="catalog-card border-t-4 border-slate-900 flex flex-col">
+                            <h3 class="text-xl font-semibold text-slate-900">Empresarial</h3>
+                            <p class="text-sm text-slate-500">Para integración completa.</p>
+                            <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
+                                <li>Todo en Profesional, y...</li>
+                                <li>Integraciones API</li>
+                                <li>Reportes Avanzados</li>
+                                <li>Soporte Prioritario</li>
+                            </ul>
+                            <a href="mailto:hola@aduanify.com" class="mt-8 block w-full rounded-md bg-slate-900 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-slate-700">
+                                Contactar Ventas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="catalogo-cta" class="py-16 sm:py-24">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                     <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Deja de adivinar. Empieza a planificar.</h2>
+                     <p class="mt-4 text-xl text-slate-600">
+                         Hablemos 15 minutos. Te mostraremos cómo Aduanify puede ahorrarte tiempo y dinero en tu próxima importación.
+                     </p>
+                     <a href="mailto:hola@aduanify.com" class="mt-10 inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-amber-600 hover:bg-amber-700">
+                        Agenda tu Demo Gratuita
+                    </a>
+                </div>
+            </section>
+        
+        </div> <div id="tab-content-canvas" class="tab-content">
+        
+            <section id="lean-canvas-content" class="py-12 sm:py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+                            Lean Canvas: Aduanify
+                        </h1>
+                        <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
+                            Un esquema visual de nuestra estrategia de negocio, enfocado en resolver problemas reales para el mercado logístico de Tijuana.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <div class="space-y-6">
+                            <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                    <span class="text-amber-500 mr-3 text-2xl">①</span> Problema
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li>Falta de visibilidad en tiempo real del estado de los cruces fronterizos.</li>
+                                    <li>Costos inesperados y multas por demoras en aduanas.</li>
+                                    <li>Planificación de producción ineficiente por ETAs (Tiempos Estimados de Arribo) poco fiables.</li>
+                                    <li>Herramientas existentes son demasiado caras o complejas para las PyMEs.</li>
+                                </ul>
+                            </div>
+                            <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">②</span> Solución
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li>Plataforma SaaS de fácil uso con dashboard centralizado.</li>
+                                    <li>Seguimiento GPS en tiempo real visible en un mapa interactivo.</li>
+                                    <li>Alertas automáticas sobre el estado del cruce aduanal (inspección, liberación).</li>
+                                     <li>Algoritmo de ETAs predictivos basado en datos históricos y en vivo.</li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="space-y-6">
-                         <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">④</span> Ventaja Injusta
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li>Algoritmo predictivo entrenado específicamente con datos del cruce Tijuana-San Diego.</li>
-                                <li>Profundo conocimiento y red de contactos en el ecosistema logístico y aduanal local.</li>
-                                 <li>Equipo fundador con experiencia directa en los problemas que se resuelven.</li>
-                            </ul>
+                        <div class="space-y-6">
+                             <div class="canvas-card h-full flex flex-col">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">③</span> Propuesta Única de Valor
+                                </h3>
+                                <div class="p-4 flex-grow flex flex-col items-center justify-center text-center">
+                                   <p class="text-2xl font-bold text-amber-600">"Visibilidad y predictibilidad en tus cruces fronterizos."</p>
+                                   <p class="mt-2 text-slate-600">Simplificamos la logística aduanal para las PyMEs de Tijuana, convirtiendo la incertidumbre en control.</p>
+                                </div>
+                            </div>
                         </div>
-                         <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">⑤</span> Segmentos de Clientes
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li><strong>PyMEs de Manufactura (Maquiladoras):</strong> Gerentes de logística y producción que necesitan coordinar la llegada de materia prima y salida de producto terminado.</li>
-                                 <li><strong>Empresas de Transporte y Logística:</strong> Coordinadores de tráfico que buscan optimizar rutas y comunicar estatus a sus clientes.</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-0 lg:mt-6">
-                        <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">⑥</span> Canales
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li>Marketing digital (LinkedIn, Google).</li>
-                                <li>Alianzas con agentes aduanales.</li>
-                                 <li>Ventas directas y demos.</li>
-                                <li>Participación en cámaras industriales.</li>
-                            </ul>
+                        <div class="space-y-6">
+                             <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">④</span> Ventaja Injusta
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li>Algoritmo predictivo entrenado específicamente con datos del cruce Tijuana-San Diego.</li>
+                                    <li>Profundo conocimiento y red de contactos en el ecosistema logístico y aduanal local.</li>
+                                     <li>Equipo fundador con experiencia directa en los problemas que se resuelven.</li>
+                                </ul>
+                            </div>
+                             <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">⑤</span> Segmentos de Clientes
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li><strong>PyMEs de Manufactura (Maquiladoras):</strong> Gerentes de logística y producción...</li>
+                                     <li><strong>Empresas de Transporte y Logística:</strong> Coordinadores de tráfico...</li>
+                                </ul>
+                            </div>
                         </div>
-                         <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">⑦</span> Métricas Clave
-                            </h3>
-                             <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li>Ingreso Mensual Recurrente (MRR).</li>
-                                <li>Tasa de Abandono de Clientes (Churn).</li>
-                                <li>Costo de Adquisición de Cliente (CAC).</li>
-                                 <li>Valor de Vida del Cliente (LTV).</li>
-                            </ul>
-                        </div>
-                        <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">⑧</span> Estructura de Costos
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li><strong>Fijos:</strong> Salarios, Renta, Licencias.</li>
-                                <li><strong>Variables:</strong> Costos de nube (servidores), APIs de mapas, Marketing.</li>
-                            </ul>
-                        </div>
-                        <div class="canvas-card">
-                            <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
-                               <span class="text-amber-500 mr-3 text-2xl">⑨</span> Flujos de Ingresos
-                            </h3>
-                            <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
-                                <li>Suscripción mensual por niveles (Tiered SaaS): Esencial, Profesional, Empresarial.</li>
-                                <li>Potencial futuro: Add-ons por integraciones API o reportes avanzados.</li>
-                            </ul>
-                        </div>
-                    </div>
 
+                        <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-0 lg:mt-6">
+                            <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">⑥</span> Canales
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li>Marketing digital (LinkedIn, Google).</li>
+                                    <li>Alianzas con agentes aduanales.</li>
+                                     <li>Ventas directas y demos.</li>
+                                    <li>Participación en cámaras industriales.</li>
+                                </ul>
+                            </div>
+                             <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">⑦</span> Métricas Clave
+                                </h3>
+                                 <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li>Ingreso Mensual Recurrente (MRR).</li>
+                                    <li>Tasa de Abandono de Clientes (Churn).</li>
+                                    <li>Costo de Adquisición de Cliente (CAC).</li>
+                                     <li>Valor de Vida del Cliente (LTV).</li>
+                                </ul>
+                            </div>
+                            <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">⑧</span> Estructura de Costos
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li><strong>Fijos:</strong> Salarios, Renta, Licencias.</li>
+                                    <li><strong>Variables:</strong> Costos de nube, APIs de mapas, Marketing.</li>
+                                </ul>
+                            </div>
+                            <div class="canvas-card">
+                                <h3 class="text-lg font-semibold p-4 text-slate-700 flex items-center">
+                                   <span class="text-amber-500 mr-3 text-2xl">⑨</span> Flujos de Ingresos
+                                </h3>
+                                <ul class="p-4 list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                    <li>Suscripción mensual por niveles (Tiered SaaS).</li>
+                                    <li>Potencial futuro: Add-ons por integraciones API.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-    </main>
+        </div> </main>
     
     <footer class="bg-white mt-12 sm:mt-16">
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6">
             <p class="text-center text-base text-slate-500">&copy; 2025 Aduanify. Optimizando la logística de Tijuana.</p>
         </div>
     </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Ocultar todos los contenidos de las pestañas
+            document.getElementById('tab-content-catalogo').style.display = 'none';
+            document.getElementById('tab-content-canvas').style.display = 'none';
+            
+            // Quitar la clase 'active' de todos los enlaces de pestañas
+            document.getElementById('tab-link-catalogo').classList.remove('active');
+            document.getElementById('tab-link-canvas').classList.remove('active');
+            
+            // Mostrar el contenido de la pestaña seleccionada
+            document.getElementById('tab-content-' + tabName).style.display = 'block';
+            
+            // Añadir la clase 'active' al enlace de la pestaña seleccionada
+            document.getElementById('tab-link-' + tabName).classList.add('active');
+        }
+
+        // Asegurarse de que el tab 'catalogo' esté visible al cargar la página
+        // (El estilo en línea 'display: block' en 'tab-content-catalogo' ya lo hace,
+        // pero esto es una doble confirmación por si acaso).
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('catalogo');
+        });
+    </script>
 
 </body>
 </html>
