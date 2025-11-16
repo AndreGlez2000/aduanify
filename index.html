@@ -15,6 +15,34 @@
             background-color: #f1f5f9; /* slate-100 */
         }
         
+        /* --- Animaciones del Hero --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-title {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .hero-subtitle {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .hero-cta {
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .hero-content {
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        
         /* --- Estilos del Lean Canvas Original --- */
         .canvas-card {
             background-color: white;
@@ -90,7 +118,7 @@
     
         <div id="tab-content-catalogo" class="tab-content" style="display: block;">
         
-            <section id="catalogo-hero" class="relative bg-white overflow-hidden">
+            <section id="catalogo-hero" class="relative bg-white overflow-hidden min-h-screen flex items-center justify-center">
                 <!-- Imagen de fondo -->
                 <div class="absolute inset-0">
                     <img src="images/aduana.jpg" alt="Cruce fronterizo" class="w-full h-full object-cover">
@@ -99,46 +127,53 @@
                 </div>
                 
                 <!-- Contenido -->
-                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-                    <div class="text-center">
-                        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div id="hero-content" class="text-center hero-content">
+                        <h1 class="hero-title text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
                             <span class="block">Visibilidad y predictibilidad</span>
-                            <span class="block text-amber-500">en tus cruces fronterizos.</span>
+                            <span class="block text-amber-500">en tiempo real para tu operación IMMEX</span>
                         </h1>
-                        <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200">
-                            Simplificamos la logística aduanal para las PyMEs de Tijuana, convirtiendo la incertidumbre en control.
+                        <p class="hero-subtitle mt-6 max-w-2xl mx-auto text-xl text-slate-200">
+                            Plataforma SaaS para PyMEs de Tijuana. Automatiza el cumplimiento de Anexos 24 y 31, controla inventarios temporales y elimina el riesgo de multas aduaneras.
                         </p>
-                        <div class="mt-10 flex justify-center gap-x-6">
+                        <div class="hero-cta mt-10 flex justify-center gap-x-6">
                             <a href="mailto:hola@aduanify.com" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 transition-all hover:scale-105">
                                 Agenda una Demo Gratuita
                             </a>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Indicador de scroll -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
             </section>
 
             <section id="catalogo-problema" class="py-16 sm:py-24">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">¿Tu logística se detiene en la frontera?</h2>
-                        <p class="mt-4 text-xl text-slate-600">Sabemos que cada minuto en aduanas cuenta.</p>
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">El cumplimiento IMMEX no debería ser tan complicado</h2>
+                        <p class="mt-4 text-xl text-slate-600">El 97% de las empresas en Tijuana son PyMEs que luchan con la complejidad aduanera.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div class="catalog-card">
-                            <h3 class="text-lg font-semibold text-slate-900">Costos Inesperados</h3>
-                            <p class="mt-2 text-sm text-slate-600">¿Cansado de costos y multas por demoras que no puedes prever?</p>
+                            <h3 class="text-lg font-semibold text-slate-900">Riesgo de Multas Millonarias</h3>
+                            <p class="mt-2 text-sm text-slate-600">Errores en Anexo 24 o vencimiento de plazos pueden resultar en multas o suspensión del programa IMMEX.</p>
                         </div>
                         <div class="catalog-card">
-                            <h3 class="text-lg font-semibold text-slate-900">ETAs Poco Fiables</h3>
-                            <p class="mt-2 text-sm text-slate-600">¿Tus Tiempos Estimados de Arribo afectan tu planeación de producción?</p>
+                            <h3 class="text-lg font-semibold text-slate-900">Control Manual Propenso a Errores</h3>
+                            <p class="mt-2 text-sm text-slate-600">Hojas de cálculo para control de inventarios temporales son ineficientes y riesgosas.</p>
                         </div>
                         <div class="catalog-card">
-                            <h3 class="text-lg font-semibold text-slate-900">Falta de Visibilidad</h3>
-                            <p class="mt-2 text-sm text-slate-600">¿Necesitas saber en tiempo real dónde está tu carga y cuál es su estatus?</p>
+                            <h3 class="text-lg font-semibold text-slate-900">Reportes SAT Complejos</h3>
+                            <p class="mt-2 text-sm text-slate-600">Generar Anexo 31 y mantener créditos fiscales consume tiempo valioso de tu equipo.</p>
                         </div>
                         <div class="catalog-card">
-                            <h3 class="text-lg font-semibold text-slate-900">Sistemas Complejos</h3>
-                            <p class="mt-2 text-sm text-slate-600">¿Las herramientas existentes son demasiado caras o complejas para tu PyME?</p>
+                            <h3 class="text-lg font-semibold text-slate-900">Software Empresarial Inaccesible</h3>
+                            <p class="mt-2 text-sm text-slate-600">Las soluciones existentes son costosas, complejas y diseñadas para grandes corporativos.</p>
                         </div>
                     </div>
                 </div>
@@ -147,9 +182,9 @@
             <section id="catalogo-solucion" class="bg-white py-16 sm:py-24">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
-                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Control total en un solo lugar.</h2>
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Cumplimiento automatizado. Tranquilidad garantizada.</h2>
                         <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
-                            Te presentamos Aduanify: una plataforma SaaS de fácil uso con un dashboard centralizado que te da el control.
+                            Aduanify es la plataforma SaaS más simple y asequible del mercado para automatizar el cumplimiento de Anexos 24 y 31. Diseñada específicamente para PyMEs IMMEX de Tijuana.
                         </p>
                     </div>
                     
@@ -450,18 +485,22 @@
                         </div>
                     </div>
 
-                    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div class="text-center">
-                            <h3 class="text-xl font-semibold text-amber-600">Seguimiento GPS en Vivo</h3>
-                            <p class="mt-2 text-base text-slate-600">Ve exactamente dónde está tu carga en nuestro mapa interactivo.</p>
+                            <h3 class="text-xl font-semibold text-amber-600">Control Automatizado Anexo 24 y 31</h3>
+                            <p class="mt-2 text-base text-slate-600">Control de inventarios temporales y generación de reportes SAT con precisión.</p>
                         </div>
                         <div class="text-center">
-                            <h3 class="text-xl font-semibold text-amber-600">Alertas Automáticas</h3>
-                            <p class="mt-2 text-base text-slate-600">Recibe notificaciones sobre el estado del cruce (inspección, liberación).</p>
+                            <h3 class="text-xl font-semibold text-amber-600">Expediente Digital Seguro</h3>
+                            <p class="mt-2 text-base text-slate-600">Almacena pedimentos, facturas y COVEs en la nube. Adiós a los archivos físicos.</p>
                         </div>
                         <div class="text-center">
-                            <h3 class="text-xl font-semibold text-amber-600">ETAs Predictivos</h3>
-                            <p class="mt-2 text-base text-slate-600">Nuestro algoritmo analiza datos para darte tiempos de arribo fiables.</p>
+                            <h3 class="text-xl font-semibold text-amber-600">Dashboard de Saldos en Tiempo Real</h3>
+                            <p class="mt-2 text-base text-slate-600">Alertas de vencimiento de plazos para tomar acciones proactivas.</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold text-amber-600">Integración VUCEM</h3>
+                            <p class="mt-2 text-base text-slate-600">Conexión directa vía API para validar datos y garantizar integridad.</p>
                         </div>
                     </div>
                 </div>
@@ -470,16 +509,17 @@
             <section id="catalogo-segmentos" class="py-16 sm:py-24">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Hecho a la medida para la industria de Tijuana.</h2>
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Diseñado para las 606 empresas IMMEX de Tijuana</h2>
+                        <p class="mt-4 text-lg text-slate-600">Baja California es líder con 1,156 empresas IMMEX. Tijuana concentra más de la mitad.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="catalog-card">
-                            <h3 class="text-xl font-semibold text-slate-900">PyMEs de Manufactura (Maquiladoras)</h3>
-                            <p class="mt-2 text-base text-slate-600">Ideal para Gerentes de logística y producción que necesitan coordinar la llegada de materia prima y la salida de producto terminado sin fallos.</p>
+                            <h3 class="text-xl font-semibold text-slate-900">PyMEs Manufactureras con Programa IMMEX</h3>
+                            <p class="mt-2 text-base text-slate-600"><strong>Cliente ideal:</strong> Empresas de 10 a 250 empleados. Usuario clave: Gerente de Comercio Exterior o Coordinador de Aduanas que busca eficiencia, reducción de riesgos y precisión en reportes.</p>
                         </div>
                         <div class="catalog-card">
-                            <h3 class="text-xl font-semibold text-slate-900">Empresas de Transporte y Logística</h3>
-                            <p class="mt-2 text-base text-slate-600">Perfecto para Coordinadores de tráfico que buscan optimizar rutas y comunicar el estatus exacto a sus propios clientes.</p>
+                            <h3 class="text-xl font-semibold text-slate-900">Agencias Aduanales</h3>
+                            <p class="mt-2 text-base text-slate-600">Agentes que prestan servicios a múltiples clientes IMMEX pequeños pueden adoptar Aduanify como herramienta estandarizada, ofreciendo servicios de valor agregado.</p>
                         </div>
                     </div>
                 </div>
@@ -488,32 +528,47 @@
             <section id="catalogo-planes" class="bg-white py-16 sm:py-24">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Planes flexibles que crecen contigo.</h2>
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Precios transparentes y asequibles para PyMEs</h2>
                         <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
-                            Elige el nivel de servicio que tu operación necesita.
+                            Sin costos ocultos. Sin implementaciones complejas. Empieza hoy mismo.
                         </p>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div class="catalog-card border-t-4 border-slate-300 flex flex-col">
                             <h3 class="text-xl font-semibold text-slate-900">Esencial</h3>
-                            <p class="text-sm text-slate-500">Para visibilidad básica.</p>
-                            <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
-                                <li>Dashboard Centralizado</li>
-                                <li>Seguimiento 10 Unidades</li>
-                                <li>Alertas Básicas</li>
+                            <div class="mt-4">
+                                <span class="text-4xl font-bold text-slate-900">$9,000</span>
+                                <span class="text-slate-500">/mes MXN</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-2">Para micro y pequeñas IMMEX</p>
+                            <ul class="mt-6 space-y-2 text-slate-600 flex-grow text-sm">
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 2 usuarios incluidos</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Hasta 100 operaciones/mes</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Cumplimiento Anexo 24 y 31</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Reportes SAT automáticos</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Historial de 30 días</li>
                             </ul>
                             <a href="mailto:hola@aduanify.com" class="mt-8 block w-full rounded-md bg-slate-100 px-3 py-2 text-center text-sm font-semibold text-slate-700 hover:bg-slate-200">
                                 Solicitar Información
                             </a>
                         </div>
                         <div class="catalog-card border-t-4 border-amber-500 flex flex-col shadow-2xl scale-105">
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                <span class="bg-amber-500 text-white px-4 py-1 rounded-full text-xs font-semibold">MÁS POPULAR</span>
+                            </div>
                             <h3 class="text-xl font-semibold text-amber-600">Profesional</h3>
-                            <p class="text-sm text-slate-500">El más popular, para control total.</p>
-                            <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
-                                <li>Todo en Esencial, y...</li>
-                                <li>Seguimiento Unidades Ilimitadas</li>
-                                <li>ETAs Predictivos</li>
-                                <li>Alertas Avanzadas</li>
+                            <div class="mt-4">
+                                <span class="text-4xl font-bold text-amber-600">$18,000</span>
+                                <span class="text-slate-500">/mes MXN</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-2">Para medianas IMMEX</p>
+                            <ul class="mt-6 space-y-2 text-slate-600 flex-grow text-sm">
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 10 usuarios incluidos</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Hasta 500 operaciones/mes</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Todo en Esencial +</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Expediente Digital completo</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Dashboard de saldos en vivo</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Alertas de vencimiento</li>
                             </ul>
                             <a href="mailto:hola@aduanify.com" class="mt-8 block w-full rounded-md bg-amber-600 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-amber-500">
                                 Agendar Demo
@@ -521,12 +576,18 @@
                         </div>
                         <div class="catalog-card border-t-4 border-slate-900 flex flex-col">
                             <h3 class="text-xl font-semibold text-slate-900">Empresarial</h3>
-                            <p class="text-sm text-slate-500">Para integración completa.</p>
-                            <ul class="mt-6 space-y-2 list-disc list-inside text-slate-600 flex-grow">
-                                <li>Todo en Profesional, y...</li>
-                                <li>Integraciones API</li>
-                                <li>Reportes Avanzados</li>
-                                <li>Soporte Prioritario</li>
+                            <div class="mt-4">
+                                <span class="text-4xl font-bold text-slate-900">$36,000</span>
+                                <span class="text-slate-500">/mes MXN</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-2">Para grandes PyMEs y agencias</p>
+                            <ul class="mt-6 space-y-2 text-slate-600 flex-grow text-sm">
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Usuarios ilimitados</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Operaciones ilimitadas</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Todo en Profesional +</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Acceso API completo</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Soporte prioritario 24/7</li>
+                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Gerente de cuenta dedicado</li>
                             </ul>
                             <a href="mailto:hola@aduanify.com" class="mt-8 block w-full rounded-md bg-slate-900 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-slate-700">
                                 Contactar Ventas
@@ -538,9 +599,9 @@
 
             <section id="catalogo-cta" class="py-16 sm:py-24">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                     <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Deja de adivinar. Empieza a planificar.</h2>
+                     <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Únete a las PyMEs que ya confían en Aduanify</h2>
                      <p class="mt-4 text-xl text-slate-600">
-                         Hablemos 15 minutos. Te mostraremos cómo Aduanify puede ahorrarte tiempo y dinero en tu próxima importación.
+                         Agenda una demo de 15 minutos. Te mostraremos cómo automatizar tu cumplimiento IMMEX, eliminar el riesgo de multas y liberar tiempo valioso de tu equipo.
                      </p>
                      <a href="mailto:hola@aduanify.com" class="mt-10 inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-amber-600 hover:bg-amber-700">
                         Agenda tu Demo Gratuita
@@ -699,6 +760,33 @@
         // pero esto es una doble confirmación por si acaso).
         document.addEventListener('DOMContentLoaded', function() {
             showTab('catalogo');
+            
+            // Animación de desvanecimiento del hero al hacer scroll
+            const heroContent = document.getElementById('hero-content');
+            const heroSection = document.getElementById('catalogo-hero');
+            
+            if (heroContent && heroSection) {
+                window.addEventListener('scroll', function() {
+                    const scrollPosition = window.scrollY;
+                    const heroHeight = heroSection.offsetHeight;
+                    
+                    // Calcular opacidad basada en el scroll (empieza a desvanecer después de 20% del scroll)
+                    const fadeStart = heroHeight * 0.2;
+                    const fadeEnd = heroHeight * 0.8;
+                    
+                    if (scrollPosition < fadeStart) {
+                        heroContent.style.opacity = '1';
+                        heroContent.style.transform = 'translateY(0)';
+                    } else if (scrollPosition >= fadeStart && scrollPosition <= fadeEnd) {
+                        const fadeProgress = (scrollPosition - fadeStart) / (fadeEnd - fadeStart);
+                        heroContent.style.opacity = String(1 - fadeProgress);
+                        heroContent.style.transform = `translateY(${fadeProgress * -30}px)`;
+                    } else {
+                        heroContent.style.opacity = '0';
+                        heroContent.style.transform = 'translateY(-30px)';
+                    }
+                });
+            }
         });
     </script>
 
