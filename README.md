@@ -1,7 +1,6 @@
 # Aduanify 🚚🛂
 
 [![Estado del Proyecto](https://img.shields.io/badge/estado-En%20Desarrollo-brightgreen?style=for-the-badge)](https://github.com/USUARIO/aduanify)
-[![Licencia](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](https://github.com/USUARIO/aduanify/blob/main/LICENSE)
 [![Versión](https://img.shields.io/badge/version-0.1.0--alpha-orange?style=for-the-badge)](https://github.com/USUARIO/aduanify)
 
 **Visibilidad y predictibilidad en tiempo real para la logística transfronteriza en Tijuana.**
@@ -58,7 +57,7 @@ Una plataforma SaaS simple, accesible y enfocada:
 ### 7️⃣ Segmentos de Clientes
 
 * **PyMEs de Manufactura (Maquiladoras):** Gerentes de logística, producción y cadena de suministro.
-* **Empresas de Transporte y Logística:** Dueños de flotillas y coordinadores de tráfico que sirven a la industria maquiladora.
+* **Empresas de Transporte y Logística:** Dueños de flotillas y coordinadores de tráfico que sirven a la industria maquila.
 
 ### 8️⃣ Estructura de Costos
 
@@ -88,12 +87,42 @@ Este proyecto busca utilizar un stack moderno, escalable y eficiente para constr
 * **Infraestructura:** Despliegue en Google Cloud (GKE) o AWS (EKS)
 * **APIs Externas:** Google Maps (para mapas y rutas), y APIs de Aduanas/Transporte a medida que se integren.
 
-## 🚀 Hoja de Ruta (Roadmap)
+## 🚀 Hoja de Ruta Detallada
 
-* **Q4 2025:** Investigación de mercado y validación del modelo de negocio.
-* **Q1 2026:** Desarrollo del MVP (Producto Mínimo Viable) y pruebas Alfa con socios clave.
-* **Q2 2026:** Lanzamiento de la Beta cerrada e incorporación de los primeros clientes de pago.
-* **Q3 2026:** Lanzamiento público en Tijuana. Inicio de campañas de marketing.
+Nuestra estrategia de lanzamiento está dividida en fases claras para asegurar la validación del producto y un crecimiento sostenible.
+
+### **Fase 0: Validación y Fundación (Q4 2025)**
+* **Validación de Problema:** Completar +50 entrevistas con Gerentes de Logística, Agentes Aduanales y dueños de transporte en Tijuana.
+* **Validación de Solución:** Presentar prototipos de UI/UX (Figma) a clientes potenciales y obtener retroalimentación.
+* **Constitución:** Creación legal de la empresa "Aduanify, S.A. de C.V.".
+* **Arquitectura:** Definición de la arquitectura técnica detallada y selección de proveedores de nube.
+
+### **Fase 1: Desarrollo del MVP (Q1 2026)**
+* **Producto Mínimo Viable (MVP):** Desarrollo del *core* de la plataforma:
+    * Módulo de alta/baja de unidades y operadores.
+    * Dashboard principal con mapa de seguimiento GPS.
+    * Sistema de cuentas de usuario y facturación.
+* **Socios Alfa:** Asegurar convenios con 2-3 empresas locales ("Alpha Partners") para pruebas gratuitas.
+* **Algoritmo v0.1:** Iniciar el desarrollo del algoritmo predictivo de ETAs, basado inicialmente en datos históricos.
+
+### **Fase 2: Beta Cerrada y Primer Ingreso (Q2 2026)**
+* **Lanzamiento Beta:** Implementación de Aduanify en las operaciones de los "Alpha Partners".
+* **Iteración Rápida:** Ciclos de desarrollo semanales para corregir bugs y aplicar mejoras basadas en el feedback real.
+* **Primeros Clientes:** Incorporar a los primeros 5-10 clientes de pago (Planes Esencial/Profesional) con un descuento "Beta Tester".
+* **Algoritmo v0.2:** Refinar el algoritmo de ETAs con los primeros flujos de datos en tiempo real.
+* **Marketing:** Construcción del *landing page* oficial y sistema de *onboarding* de clientes.
+
+### **Fase 3: Lanzamiento Público y Crecimiento (Q3 2026)**
+* **Lanzamiento Oficial:** Apertura pública de la plataforma para el mercado de Tijuana.
+* **Adquisición:** Activación de campañas de marketing digital (LinkedIn, Google Ads) y un vendedor de campo.
+* **Soporte:** Contratación del primer rol de Éxito del Cliente (Customer Success) para gestionar el *onboarding* y la retención.
+* **Alianzas:** Formalizar alianzas con 2-3 agencias aduanales para co-marketing y referencias.
+
+### **Fase 4: Escalamiento y Expansión de Producto (Q4 2026)**
+* **Métricas Objetivo:** Alcanzar 30 clientes de pago activos.
+* **Producto Empresarial:** Desarrollo del módulo de "Integración API" para clientes del plan Empresarial.
+* **Nuevas Funcionalidades:** Iniciar desarrollo de analítica avanzada, reportes de desempeño de flotillas y optimización de rutas.
+* **Expansión Geográfica:** Comenzar el análisis de mercados adyacentes (ej. Mexicali, Ensenada) para la expansión en 2027.
 
 ## 🤝 Cómo Contribuir
 
@@ -107,7 +136,3 @@ Este proyecto busca utilizar un stack moderno, escalable y eficiente para constr
 6.  Abre un **Pull Request** para revisión.
 
 También puedes contactarnos directamente a [**hola@aduanify.com**](mailto:hola@aduanify.com) (email de ejemplo).
-
-## 📜 Licencia
-
-Este proyecto está bajo la **Licencia MIT**. Puedes ver el archivo `LICENSE` (a ser creado) para más detalles.
