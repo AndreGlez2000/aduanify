@@ -43,6 +43,17 @@
             transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
         
+        .section-content {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         /* --- Estilos del Lean Canvas Original --- */
         .canvas-card {
             background-color: white;
@@ -152,13 +163,20 @@
                 </div>
             </section>
 
-            <section id="catalogo-problema" class="py-16 sm:py-24">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">El cumplimiento IMMEX no debería ser tan complicado</h2>
-                        <p class="mt-4 text-xl text-slate-600">El 97% de las empresas en Tijuana son PyMEs que luchan con la complejidad aduanera.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <section id="catalogo-problema" class="relative overflow-hidden min-h-screen flex items-center justify-center">
+                <!-- Imagen de fondo -->
+                <div class="absolute inset-0">
+                    <img src="images/aduana2.jpg" alt="Operación IMMEX" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95"></div>
+                </div>
+                
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div id="problema-content" class="section-content">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">El cumplimiento IMMEX no debería ser tan complicado</h2>
+                            <p class="mt-4 text-xl text-slate-600">El 97% de las empresas en Tijuana son PyMEs que luchan con la complejidad aduanera.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div class="catalog-card">
                             <h3 class="text-lg font-semibold text-slate-900">Riesgo de Multas Millonarias</h3>
                             <p class="mt-2 text-sm text-slate-600">Errores en Anexo 24 o vencimiento de plazos pueden resultar en multas o suspensión del programa IMMEX.</p>
@@ -179,7 +197,9 @@
                 </div>
             </section>
 
-            <section id="catalogo-solucion" class="bg-white py-16 sm:py-24">
+            <section id="catalogo-solucion" class="relative bg-white overflow-hidden min-h-screen flex items-center justify-center">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div id="solucion-content" class="section-content">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
                         <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Cumplimiento automatizado. Tranquilidad garantizada.</h2>
@@ -503,10 +523,13 @@
                             <p class="mt-2 text-base text-slate-600">Conexión directa vía API para validar datos y garantizar integridad.</p>
                         </div>
                     </div>
+                    </div>
                 </div>
             </section>
 
-            <section id="catalogo-segmentos" class="py-16 sm:py-24">
+            <section id="catalogo-segmentos" class="relative overflow-hidden min-h-screen flex items-center justify-center">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div id="segmentos-content" class="section-content">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Diseñado para las 606 empresas IMMEX de Tijuana</h2>
@@ -522,10 +545,13 @@
                             <p class="mt-2 text-base text-slate-600">Agentes que prestan servicios a múltiples clientes IMMEX pequeños pueden adoptar Aduanify como herramienta estandarizada, ofreciendo servicios de valor agregado.</p>
                         </div>
                     </div>
+                    </div>
                 </div>
             </section>
 
-            <section id="catalogo-planes" class="bg-white py-16 sm:py-24">
+            <section id="catalogo-planes" class="relative bg-white overflow-hidden min-h-screen flex items-center justify-center">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div id="planes-content" class="section-content">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Precios transparentes y asequibles para PyMEs</h2>
@@ -594,10 +620,13 @@
                             </a>
                         </div>
                     </div>
+                    </div>
                 </div>
             </section>
 
-            <section id="catalogo-cta" class="py-16 sm:py-24">
+            <section id="catalogo-cta" class="relative overflow-hidden min-h-screen flex items-center justify-center">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                    <div id="cta-content" class="section-content">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                      <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Únete a las PyMEs que ya confían en Aduanify</h2>
                      <p class="mt-4 text-xl text-slate-600">
@@ -606,6 +635,7 @@
                      <a href="mailto:hola@aduanify.com" class="mt-10 inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-amber-600 hover:bg-amber-700">
                         Agenda tu Demo Gratuita
                     </a>
+                    </div>
                 </div>
             </section>
         
@@ -787,6 +817,36 @@
                     }
                 });
             }
+            
+            // Animación de aparición/desvanecimiento para todas las secciones
+            const sections = [
+                { id: 'problema-content', section: 'catalogo-problema' },
+                { id: 'solucion-content', section: 'catalogo-solucion' },
+                { id: 'segmentos-content', section: 'catalogo-segmentos' },
+                { id: 'planes-content', section: 'catalogo-planes' },
+                { id: 'cta-content', section: 'catalogo-cta' }
+            ];
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(({ id }) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    observer.observe(element);
+                }
+            });
         });
     </script>
 
